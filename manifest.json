@@ -1,0 +1,23 @@
+{
+  "name": "Catatan Irkham - Blog Islami",
+  "short_name": "Irkham",
+  "description": "Ruang berbagi kajian, inspirasi, dan hikmah.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#059669",
+  "icons": [
+    {
+      "src": "profil.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
