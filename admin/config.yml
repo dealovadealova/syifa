@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: dealovadealova/blog-islami
+  repo: dealovadealova/syifa
   branch: main
   
 media_folder: "images"
