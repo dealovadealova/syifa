@@ -2,7 +2,6 @@ backend:
   name: github
   repo: dealovadealova/syifa
   branch: main
-  app_id: Ov23liDaUSc1QL3LTaok
   
 media_folder: "images"
 public_folder: "/images"
