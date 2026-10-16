@@ -3,7 +3,7 @@ title: 7 Golongan yang Mendapat Naungan Allah di Padang Mahsyar
 kategori: Hikmah
 date: 2026-10-12T16:52:00
 thumbnail: /images/1791798726.png
-summary: Bayangkan matahari didekatkan satu mil dan panasnya luar biasa! Di tengah kepanikan itu, ada 7 golongan istimewa yang justru menikmati sejuknya naungan Arsy Allah. Siapa saja mereka? Simak rahasia lengkap beserta dalil shahihnya di sini ya!
+summary: Bayangkan matahari didekatkan satu mil dan panasnya luar biasa! Di tengah kepanikan itu, ada 7 golongan istimewa yang justru menikmati sejuknya naungan Arsy Allah. Siapa saja mereka? Simak rahasia lengkap beserta dalil shahihnya di sini!
 ---
 
 Halo Sobat! Pernah nggak sih kita membayangkan betapa dahsyatnya huruf hara hari kiamat nanti?
