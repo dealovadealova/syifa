@@ -6,13 +6,16 @@ on:
 jobs:
   bangun-html:
     runs-on: ubuntu-latest
+    # INI KUNCI UTAMANYA AGAR TIDAK ERROR 128 (DITOLAK GITHUB)
+    permissions:
+      contents: write
     steps:
       - name: Ambil Data Web
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Siapkan Mesin Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
       - name: Install Alat Pengubah Teks
         run: npm install marked
       - name: Jalankan Mesin Pembuat HTML
