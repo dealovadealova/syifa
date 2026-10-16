@@ -29,9 +29,9 @@
     <div class="max-w-4xl mx-auto px-2 md:px-8 py-2 md:py-3 flex flex-nowrap items-center justify-between">
       
       <div class="flex items-center gap-1.5 md:gap-3 flex-shrink-0">
-        <img src="profil.png" alt="Mas Irkham" class="w-9 h-9 md:w-12 md:h-12 rounded-full object-cover border-2 border-emerald-500 shadow-sm flex-shrink-0">
+        <img src="profil.png" alt="Syifa AL" class="w-9 h-9 md:w-12 md:h-12 rounded-full object-cover border-2 border-emerald-500 shadow-sm flex-shrink-0">
         <div class="flex flex-col text-left">
-          <span id="jam-digital" class="text-[12px] md:text-lg font-bold text-slate-800 leading-none font-mono tracking-tight">00:00:00 WIB</span>
+          <span id="jam-digital" class="text-[12px] md:text-lg font-bold text-slate-800 leading-none font-mono tracking-tight">00:00:00 Waktu Mesir</span>
           <span id="tanggal-jawa" class="text-[9px] md:text-sm text-emerald-600 font-semibold mt-0.5">Memuat tanggal...</span>
         </div>
       </div>
@@ -104,12 +104,11 @@
       <p class="text-sm font-medium text-emerald-500 mb-1">BaseCamp : Al Azhar, Kairo, Mesir</p>
       <p class="text-sm text-slate-400 italic mb-5">Dipersembahkan dengan niat Ibadah</p>
       <div class="w-16 h-px bg-slate-700 mx-auto mb-5"></div>
-      <p class="text-xs text-slate-500">&copy; 2026 Syifa. Hak Cipta Dilindungi.</p>
+      <p class="text-xs text-slate-500">&copy; 2026 Syifa AL. Hak Cipta Dilindungi.</p>
     </div>
   </footer>
 
   <script>
-    <script>
     function jalankanSistemWaktu() {
       // 1. Mengambil waktu real-time khusus zona waktu Kairo (Mesir)
       const waktuKairoString = new Date().toLocaleString("en-US", { timeZone: "Africa/Cairo" });
@@ -141,13 +140,13 @@
       let indeksPasaran = (bedaHari % 5);
       if (indeksPasaran < 0) indeksPasaran += 5; 
       
-      document.getElementById('tanggal-jawa').innerText = `${namaHari} ${pasaranArr[indeksPasaran]}, ${now.getDate()} ${namaBulan} ${now.getFullYear()}`;
+      document.getElementById('tanggal-jawa').innerText = `${namaHari} ${pasaranArr[indeksPasaran]},${now.getDate()} ${namaBulan}${now.getFullYear()}`;
     }
     
     setInterval(jalankanSistemWaktu, 1000);
     jalankanSistemWaktu();
 
-    // --- BAGIAN INSPIRASI HARIAN (TIDAK PERLU DIUBAH) ---
+    // --- BAGIAN INSPIRASI HARIAN ---
     const daftarInspirasi = [
       "Sebaik-baik manusia adalah yang paling bermanfaat bagi manusia lainnya.",
       "Barangsiapa bersungguh-sungguh, sesungguhnya kesungguhannya itu adalah untuk dirinya sendiri.",
@@ -158,7 +157,6 @@
       "Jadikanlah sabar dan shalat sebagai penolongmu dalam setiap langkah."
     ];
     
-    // Menggunakan hari di Mesir untuk teks inspirasi harian
     const waktuKairoStringInspirasi = new Date().toLocaleString("en-US", { timeZone: "Africa/Cairo" });
     const hariIni = new Date(waktuKairoStringInspirasi).getDay();
     const kalimat = "✨ " + daftarInspirasi[hariIni] + " ✨";
@@ -215,17 +213,14 @@
                 let ringkasan = '';
                 
                 if (barisRingkasan) {
-                  // Hapus semua jenis tanda kutip dan bersihkan spasi
                   ringkasan = barisRingkasan[1].replace(/['"]/g, '').trim();
                 }
 
-                // Jika kolom ringkasan di CMS memang benar-benar tidak diisi, baru ambil awal artikel
                 if (!ringkasan && isiArtikel) {
                   let teksBersih = isiArtikel.replace(/[#*`_>\[\]]/g, '').replace(/\s+/g, ' ').trim();
                   ringkasan = teksBersih.substring(0, 120) + '...';
                 }
 
-                // Ambil Tanggal dari artikel
                 let tMatch = info.match(/(?:date|tanggal|waktu):\s*['"]?(.*?)['"]?(?:\r?\n|$)/i);
                 let dateObj = new Date(0); 
                 if (tMatch) {
@@ -252,16 +247,13 @@
           }
         });
 
-        // Tunggu proses sedot semua artikel selesai
         await Promise.all(prosesFetch);
 
-        // OTOMATIS URUTKAN BERDASARKAN TANGGAL TERBARU
         semuaArtikel.sort((a, b) => b.dateObj - a.dateObj);
 
         let htmlArtikel = '';
         let jumlahTampil = 0;
 
-        // Cetak ke layar
         for (const artikel of semuaArtikel) {
             let infoTanggal = artikel.tanggalCantik 
                ? `<span class="text-[10px] text-slate-400 font-medium text-right w-1/2 flex justify-end items-center gap-1">
