@@ -7,12 +7,12 @@
   
   <!-- KODE WAJIB AGAR GAMBAR & RINGKASAN MUNCUL DI WA / FB -->
   <meta property="og:type" content="article">
-  <meta property="og:title" content="{{JUDUL}} | Catatan Irkham">
+  <meta property="og:title" content="{{JUDUL}} | Catatan Syifa">
   <meta property="og:description" content="{{RINGKASAN}}">
-  <meta property="og:image" content="https://irkham.pages.dev{{GAMBAR}}">
+  <meta property="og:image" content="https://syifaaulia.pages.dev/{{GAMBAR}}">
   
   <meta name="description" content="{{RINGKASAN}}">
-  <meta name="keywords" content="{{KATEGORI}}, blog islami, catatan irkham">
+  <meta name="keywords" content="{{KATEGORI}}, blog islami, catatan syifa">
   <link rel="icon" href="profil.png" type="image/png">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#059669">
@@ -20,7 +20,7 @@
   <!-- KUNCI KONTAK MESIN FORMAT ARTIKEL (Typography) -->
   <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
   
-  <!-- FONT AMIRI UNTUK TEKS ARAB (Tambahan Baru) -->
+  <!-- FONT AMIRI UNTUK TEKS ARAB -->
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
@@ -28,9 +28,9 @@
   <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
     <div class="max-w-4xl mx-auto px-2 md:px-8 py-2 md:py-3 flex flex-nowrap items-center justify-between">
       <div class="flex items-center gap-1.5 md:gap-3 flex-shrink-0">
-        <img src="profil.png" alt="Mas Irkham" class="w-9 h-9 md:w-12 md:h-12 rounded-full object-cover border-2 border-emerald-500 shadow-sm flex-shrink-0">
+        <img src="profil.png" alt="Syifa AL" class="w-9 h-9 md:w-12 md:h-12 rounded-full object-cover border-2 border-emerald-500 shadow-sm flex-shrink-0">
         <div class="flex flex-col text-left">
-          <span id="jam-digital" class="text-[12px] md:text-lg font-bold text-slate-800 leading-none font-mono tracking-tight">00:00:00 WIB</span>
+          <span id="jam-digital" class="text-[12px] md:text-lg font-bold text-slate-800 leading-none font-mono tracking-tight">00:00:00 Waktu Mesir</span>
           <span id="tanggal-jawa" class="text-[9px] md:text-sm text-emerald-600 font-semibold mt-0.5">Memuat tanggal...</span>
         </div>
       </div>
@@ -66,12 +66,10 @@
         </div>
       </div>
       
-      <!-- WADAH ARTIKEL DENGAN FORMAT PROSE (Nomor & Enter Otomatis Berfungsi) -->
       <div class="prose prose-slate prose-emerald max-w-none text-[15px] md:text-lg leading-relaxed mb-12 text-justify">
         {{KONTEN}}
       </div>
 
-      <!-- TOMBOL SHARE MEDSOS (Dipindah ke luar dari konten agar rapi) -->
       <div class="mt-10 border-t border-slate-200 pt-8 pb-4">
         <h3 class="text-sm font-bold text-slate-800 mb-4 text-center md:text-left">Bagikan manfaat artikel ini:</h3>
         <div class="flex flex-wrap justify-center md:justify-start gap-3">
@@ -102,7 +100,6 @@
       </div>
     </article>
 
-    <!-- Tempat Komentar Disqus -->
     <div id="disqus_thread" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 md:p-12"></div>
   </main>
 
@@ -134,11 +131,10 @@
   </script>
 
   <!-- ========================================== -->
-  <!-- 4. JAVASCRIPT JAM & TANGGAL (WAKTU MESIR)  -->
+  <!-- JAVASCRIPT JAM & TANGGAL (WAKTU MESIR)     -->
   <!-- ========================================== -->
   <script>
     function jalankanSistemWaktu() {
-      // Mengambil waktu real-time khusus zona waktu Kairo (Mesir)
       const waktuKairoString = new Date().toLocaleString("en-US", { timeZone: "Africa/Cairo" });
       const now = new Date(waktuKairoString);
 
@@ -146,13 +142,11 @@
       const menit = String(now.getMinutes()).padStart(2, '0');
       const detik = String(now.getSeconds()).padStart(2, '0');
       
-      // Ubah tulisan WIB menjadi Waktu Mesir
       document.getElementById('jam-digital').innerText = `${jam}:${menit}:${detik} Waktu Mesir`;
 
       const namaHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'][now.getDay()];
       const namaBulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'][now.getMonth()];
       
-      // Perhitungan pasaran Jawa menyesuaikan tanggal yang sedang berjalan di Kairo
       const refDate = new Date(2021, 0, 1);
       const todayDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
       const bedaHari = Math.floor((todayDate - refDate) / (1000 * 3600 * 24));
@@ -168,7 +162,6 @@
     jalankanSistemWaktu();
   </script>
 
-  <!-- MESIN PWA -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -272,7 +265,6 @@
     (d.head || d.body).appendChild(s);
   </script>
 
-  <!-- SCRIPT OTOMATIS MERAPIKAN TEKS ARAB (Tambahan Baru) -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const semuaParagraf = document.querySelectorAll('.prose p, .prose h1, .prose h2, .prose h3, .prose blockquote, .prose span, .prose div');
