@@ -109,9 +109,13 @@
   </footer>
 
   <script>
+    <script>
     function jalankanSistemWaktu() {
-      const now = new Date();
+      // 1. Mengambil waktu real-time khusus zona waktu Kairo (Mesir)
+      const waktuKairoString = new Date().toLocaleString("en-US", { timeZone: "Africa/Cairo" });
+      const now = new Date(waktuKairoString);
       
+      // 2. Mengatur Sapaan Pagi/Siang/Sore berdasarkan jam di Mesir
       const jamSekarang = now.getHours();
       let teksSapa = 'Malam';
       if (jamSekarang >= 3 && jamSekarang < 10) teksSapa = 'Pagi';
@@ -119,11 +123,13 @@
       else if (jamSekarang >= 15 && jamSekarang < 18) teksSapa = 'Sore';
       document.getElementById('teks-sapaan').innerText = `Selamat ${teksSapa}, Kak!`;
 
+      // 3. Mengatur Jam Digital
       const jam = String(now.getHours()).padStart(2, '0');
       const menit = String(now.getMinutes()).padStart(2, '0');
       const detik = String(now.getSeconds()).padStart(2, '0');
-      document.getElementById('jam-digital').innerText = `${jam}:${menit}:${detik} WIB`;
+      document.getElementById('jam-digital').innerText = `${jam}:${menit}:${detik} Waktu Mesir`;
 
+      // 4. Mengatur Tanggal dan Pasaran Jawa
       const namaHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'][now.getDay()];
       const namaBulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'][now.getMonth()];
       
@@ -135,12 +141,13 @@
       let indeksPasaran = (bedaHari % 5);
       if (indeksPasaran < 0) indeksPasaran += 5; 
       
-      document.getElementById('tanggal-jawa').innerText = `${namaHari} ${pasaranArr[indeksPasaran]},${now.getDate()} ${namaBulan}${now.getFullYear()}`;
+      document.getElementById('tanggal-jawa').innerText = `${namaHari} ${pasaranArr[indeksPasaran]}, ${now.getDate()} ${namaBulan} ${now.getFullYear()}`;
     }
     
     setInterval(jalankanSistemWaktu, 1000);
     jalankanSistemWaktu();
 
+    // --- BAGIAN INSPIRASI HARIAN (TIDAK PERLU DIUBAH) ---
     const daftarInspirasi = [
       "Sebaik-baik manusia adalah yang paling bermanfaat bagi manusia lainnya.",
       "Barangsiapa bersungguh-sungguh, sesungguhnya kesungguhannya itu adalah untuk dirinya sendiri.",
@@ -151,7 +158,9 @@
       "Jadikanlah sabar dan shalat sebagai penolongmu dalam setiap langkah."
     ];
     
-    const hariIni = new Date().getDay();
+    // Menggunakan hari di Mesir untuk teks inspirasi harian
+    const waktuKairoStringInspirasi = new Date().toLocaleString("en-US", { timeZone: "Africa/Cairo" });
+    const hariIni = new Date(waktuKairoStringInspirasi).getDay();
     const kalimat = "✨ " + daftarInspirasi[hariIni] + " ✨";
     const teksNyambung = `<span>${kalimat}</span><span>${kalimat}</span><span>${kalimat}</span><span>${kalimat}</span>`;
     document.getElementById('wadah-inspirasi').innerHTML = teksNyambung;
