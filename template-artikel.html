@@ -133,30 +133,37 @@
     }
   </script>
 
-  <!-- SCRIPT JAM DIGITAL -->
+  <!-- ========================================== -->
+  <!-- 4. JAVASCRIPT JAM & TANGGAL (WAKTU MESIR)  -->
+  <!-- ========================================== -->
   <script>
     function jalankanSistemWaktu() {
-      const now = new Date();
+      // Mengambil waktu real-time khusus zona waktu Kairo (Mesir)
+      const waktuKairoString = new Date().toLocaleString("en-US", { timeZone: "Africa/Cairo" });
+      const now = new Date(waktuKairoString);
+
       const jam = String(now.getHours()).padStart(2, '0');
       const menit = String(now.getMinutes()).padStart(2, '0');
       const detik = String(now.getSeconds()).padStart(2, '0');
-      if(document.getElementById('jam-digital')) {
-        document.getElementById('jam-digital').innerText = `${jam}:${menit}:${detik} WIB`;
-      }
       
+      // Ubah tulisan WIB menjadi Waktu Mesir
+      document.getElementById('jam-digital').innerText = `${jam}:${menit}:${detik} Waktu Mesir`;
+
       const namaHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'][now.getDay()];
       const namaBulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'][now.getMonth()];
+      
+      // Perhitungan pasaran Jawa menyesuaikan tanggal yang sedang berjalan di Kairo
       const refDate = new Date(2021, 0, 1);
       const todayDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
       const bedaHari = Math.floor((todayDate - refDate) / (1000 * 3600 * 24));
+      
       const pasaranArr = ['Pahing', 'Pon', 'Wage', 'Kliwon', 'Legi'];
       let indeksPasaran = (bedaHari % 5);
       if (indeksPasaran < 0) indeksPasaran += 5; 
       
-      if(document.getElementById('tanggal-jawa')) {
-        document.getElementById('tanggal-jawa').innerText = `${namaHari} ${pasaranArr[indeksPasaran]}, ${now.getDate()} ${namaBulan} ${now.getFullYear()}`;
-      }
+      document.getElementById('tanggal-jawa').innerText = `${namaHari} ${pasaranArr[indeksPasaran]}, ${now.getDate()} ${namaBulan} ${now.getFullYear()}`;
     }
+    
     setInterval(jalankanSistemWaktu, 1000);
     jalankanSistemWaktu();
   </script>
