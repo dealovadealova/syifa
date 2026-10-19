@@ -131,10 +131,11 @@
   </script>
 
   <!-- ========================================== -->
-  <!-- JAVASCRIPT JAM & TANGGAL (WAKTU MESIR)     -->
+  <!-- 4. JAVASCRIPT JAM & TANGGAL (WAKTU MESIR)  -->
   <!-- ========================================== -->
   <script>
     function jalankanSistemWaktu() {
+      // Mengambil waktu real-time khusus zona waktu Kairo (Mesir)
       const waktuKairoString = new Date().toLocaleString("en-US", { timeZone: "Africa/Cairo" });
       const now = new Date(waktuKairoString);
 
@@ -142,11 +143,13 @@
       const menit = String(now.getMinutes()).padStart(2, '0');
       const detik = String(now.getSeconds()).padStart(2, '0');
       
+      // Ubah tulisan WIB menjadi Waktu Mesir
       document.getElementById('jam-digital').innerText = `${jam}:${menit}:${detik} Waktu Mesir`;
 
       const namaHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'][now.getDay()];
       const namaBulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'][now.getMonth()];
       
+      // Perhitungan pasaran Jawa menyesuaikan tanggal yang sedang berjalan di Kairo
       const refDate = new Date(2021, 0, 1);
       const todayDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
       const bedaHari = Math.floor((todayDate - refDate) / (1000 * 3600 * 24));
